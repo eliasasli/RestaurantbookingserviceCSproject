@@ -12,7 +12,7 @@ public class DashboardForm extends JFrame {
     private JLabel lbAdmin;
     private JButton btnRegister;
 
-    public DashboardForm() {
+    public DashboardForm() throws Exception {
         setTitle("Main Menu");
         setContentPane(dashboardPanel);
         setMinimumSize(new Dimension(500, 429));
@@ -50,57 +50,22 @@ public class DashboardForm extends JFrame {
         });
     }
 
-    private boolean connectToDatabase() {
+    private boolean connectToDatabase() throws Exception {
         boolean hasRegistredUsers = false;
 
-        final String MYSQL_SERVER_URL = "jdbc:mysql://localhost/";
-        final String DB_URL = "jdbc:mysql://localhost/MyStore?serverTimezone=UTC";
-        final String USERNAME = "root";
-        final String PASSWORD = "";
+        Connection connection = DriverManager.getConnection("jdbc:ucanaccess:/Databaseyesyes.accdb");
 
-try {
-    Connection conn = DriverManager.getConnection(MYSQL_SERVER_URL, USERNAME, PASSWORD);
-    Statement statement = conn.createStatement();
-    statement.executeUpdate("CREATE DATABASE IF NOT EXISTS MyStore");
-    statement.close();
-    conn.close();
+        Statement st = connection.createStatement();
+        ResultSet resultset = st.executeQuery("Select * from User");
+        while (resultset.next())
+            System.out.println(resultset.getString(1) + "\t" + resultset.getString(2));
 
+        connection.close();
 
-    conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-    statement = conn.createStatement();
-    String sql = "CREATE TABLE IF NOT EXISTS users ("
-            + "id INT( 10 ) NOT NULL PRIMARY KEY AUTO_INCREMENT,"
-            + "name VARCHAR(200) NOT NULL,"
-            + "email VARCHAR(200) NOT NULL UNIQUE,"
-            + "phone VARCHAR(200),"
-            + "address VARCHAR(200),"
-            + "password VARCHAR(200) NOT NULL"
-            + ")";
-    statement.executeUpdate(sql);
-
-
-    statement = conn.createStatement();
-    ResultSet resultSet = statement.executeQuery("SELECT COUNT(*) FROM users");
-
-    if (resultSet.next()) {
-        int numUsers = resultSet.getInt(1);
-        if (numUsers > 0){
-            hasRegistredUsers = true;
-        }
+        return hasRegistredUsers;
     }
 
-    statement.close();
-    conn.close();
-
-
-} catch(Exception e){
-    e.printStackTrace();
-}
-    return hasRegistredUsers;
-
-    }
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         DashboardForm myForm = new DashboardForm();
     }
 }

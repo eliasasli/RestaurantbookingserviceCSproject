@@ -2,10 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
+import java.sql.*;
 
 public class RegistrationForm extends JDialog {
     private JTextField tfName;
@@ -17,6 +14,7 @@ public class RegistrationForm extends JDialog {
     private JButton btnRegister;
     private JButton btnCancel;
     private JPanel registerPanel;
+
 
     public RegistrationForm(JFrame parent) {
         super(parent);
@@ -30,7 +28,11 @@ public class RegistrationForm extends JDialog {
         btnRegister.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                registerUser();
+                try {
+                    registerUser();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
             }
         });
         btnCancel.addActionListener(new ActionListener() {
@@ -43,7 +45,7 @@ public class RegistrationForm extends JDialog {
         setVisible(true);
     }
 
-    private void registerUser() {
+    private void registerUser() throws Exception {
         String name = tfName.getText();
         String email = tfEmail.getText();
         String phone = tfPhone.getText();
@@ -68,7 +70,7 @@ public class RegistrationForm extends JDialog {
             return;
         }
 
-        user = addUserToDatabase(name, email, phone, address, password);
+        user = addUserToDatabase(fname, lname, email, password, phone, address );
         if (user != null) {
             dispose();
         }
@@ -79,46 +81,28 @@ public class RegistrationForm extends JDialog {
                     JOptionPane.ERROR_MESSAGE );
         }
     }
-
     public User user;
-    private User addUserToDatabase(String name, String email, String phone, String address, String password) {
+    public static void writeToDatabase(String fname, String lname, String email, String password, String phone, String address) throws SQLException {
         User user = null;
+        String DatabaseLocation = "jdbc:ucanaccess://Databaseyesyes.accdb";
+        try (Connection con = DriverManager.getConnection(DatabaseLocation)) {
 
-        final String DB_URL = "jdbc:mysql://localhost/userregistration";
-        final String USERNAME = "root";
-        final String PASSWORD = "";
+            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String sql = "INSERT INTO User (fname, lname, email, password, phone, address) VALUES (?,?,?,?,?,?)";
+           // String sql = "INSERT INTO User (Username, Password) VALUES (?,?)";
+            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            preparedStatement.setString(1, fname);
+            preparedStatement.setString(2, lname);
+            preparedStatement.setString(4, password);
+            preparedStatement.setString(3, email);
+            preparedStatement.setString(5, phone);
+            preparedStatement.setString(6, address);
 
-        try{
-            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
-
-            Statement stmt = conn.createStatement();
-            String sql = "INSERT INTO `user`(`name`, `email`, `phone`, `address`, `password`) VALUES (?, ?, ?, ?, ?)";
-
-
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, name);
-            preparedStatement.setString(2, email);
-            preparedStatement.setString(3, phone);
-            preparedStatement.setString(4, address);
-            preparedStatement.setString(5, password);
-
-
-            int addedRows = preparedStatement.executeUpdate();
-            if (addedRows > 0) {
-                user = new User();
-                user.name = name;
-                user.email = email;
-                user.phone = phone;
-                user.address = address;
-                user.password = password;
-            }
-
-            stmt.close();
-            conn.close();
-        }catch(Exception e){
-            e.printStackTrace();
+            int row = preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error in thew SQL class: " + e);
         }
-        return user;
+
     }
 
 

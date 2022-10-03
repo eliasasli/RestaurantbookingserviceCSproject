@@ -2,30 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba05c47b-f1e7-4f82-8506-fcac7b9c709e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Restaurant booking service - CS project 1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mysql-connector-java-8.0.30.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DashboardForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DashboardForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LoginForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/LoginForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RegistrationForm.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/RegistrationForm.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ResutSet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/javaGUI.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/javaGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/stock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/working.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ww.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ww.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DashboardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistrationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistrationForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,18 +34,9 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/elias/IdeaProjects/mysql-connector-java-8.0.30.jar&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -86,7 +58,7 @@
       <visibility group="org.jetbrains.plugins.gradle.execution.GradleRunAnythingProvider" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="Application.LoginForm">
+  <component name="RunManager" selected="Application.RegistrationForm">
     <configuration name="DashboardForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DashboardForm" />
       <module name="Restaurant booking service - CS project 1" />
@@ -110,8 +82,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.RegistrationForm" />
+        <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.DashboardForm" />
       </list>
     </recent_temporary>
@@ -137,5 +109,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

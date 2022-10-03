@@ -26,7 +26,11 @@ public class LoginForm extends JDialog {
                 String email = tfEmail.getText();
                 String password = String.valueOf(pfPassword.getPassword());
 
-                user = getAuthenticatedUser(email, password);
+                try {
+                    user = getAuthenticatedUser(email, password);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
 
                 if (user != null) {
                     dispose();
@@ -49,18 +53,23 @@ public class LoginForm extends JDialog {
     }
 
     public User user;
-    private User getAuthenticatedUser(String email, String password) {
+    private User getAuthenticatedUser(String email, String password) throws Exception{
         User user = null;
 
-        final String DB_URL = "jdbc:mysql://localhost/userregistration";
-        final String USERNAME = "root";
-        final String PASSWORD = "";
+        Connection connection = DriverManager.getConnection("jdbc:ucanaccess:/Databaseyesyes.accdb");
+
+        Statement statement = connection.createStatement();
+        ResultSet resultset = statement.executeQuery("Select * from User");
+        while (resultset.next())
+            System.out.println(resultset.getString(1) + "\t" + resultset.getString(2));
+
+        connection.close();
 
         try{
-            Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+            Connection conn = DriverManager.getConnection(String.valueOf(connection));
 
             Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM users WHERE email=? AND password=?";
+            String sql = "SELECT * FROM User WHERE email=? AND password=?";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);
@@ -69,7 +78,8 @@ public class LoginForm extends JDialog {
 
             if (resultSet.next()) {
                 user = new User();
-                user.name = resultSet.getString("name");
+                user.name = resultSet.getString("fname");
+                user.name = resultSet.getString("lname");
                 user.email = resultSet.getString("email");
                 user.phone = resultSet.getString("phone");
                 user.address = resultSet.getString("address");
