@@ -5,10 +5,11 @@ import java.awt.event.ActionListener;
 import java.sql.*;
 
 public class RegistrationForm extends JDialog {
-    private JTextField tfName;
     private JTextField tfEmail;
     private JTextField tfPhone;
     private JTextField tfAddress;
+    private JTextField tffname;
+    private JTextField tflname;
     private JPasswordField pfPassword;
     private JPasswordField pfConfirmPassword;
     private JButton btnRegister;
@@ -46,14 +47,15 @@ public class RegistrationForm extends JDialog {
     }
 
     private void registerUser() throws Exception {
-        String name = tfName.getText();
+        String name1 = tffname.getText();
+        String name2 = tflname.getText();
         String email = tfEmail.getText();
         String phone = tfPhone.getText();
         String address = tfAddress.getText();
         String password = String.valueOf(pfPassword.getPassword());
         String confirmPassword = String.valueOf(pfConfirmPassword.getPassword());
 
-        if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() ||password.isEmpty()) {
+        if (name1.isEmpty() || name2.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() ||password.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "1 or more fields are empty",
                             "Please Try Again",
@@ -70,7 +72,7 @@ public class RegistrationForm extends JDialog {
             return;
         }
 
-        user = addUserToDatabase(fname, lname, email, password, phone, address );
+        user = writeToDatabase(name1, name2 , email, password, phone, address );
         if (user != null) {
             dispose();
         }
@@ -82,17 +84,16 @@ public class RegistrationForm extends JDialog {
         }
     }
     public User user;
-    public static void writeToDatabase(String fname, String lname, String email, String password, String phone, String address) throws SQLException {
+    public static User writeToDatabase(String name1, String name2, String email, String password, String phone, String address) throws SQLException {
         User user = null;
-        String DatabaseLocation = "jdbc:ucanaccess://Databaseyesyes.accdb";
+        String DatabaseLocation = "jdbc:Ucanaccess://X:/My Documents/Databaseyesyes.accdb";
         try (Connection con = DriverManager.getConnection(DatabaseLocation)) {
 
             Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            String sql = "INSERT INTO User (fname, lname, email, password, phone, address) VALUES (?,?,?,?,?,?)";
-           // String sql = "INSERT INTO User (Username, Password) VALUES (?,?)";
+            String sql = "INSERT INTO User (name1, name2, email, password, phone, address) VALUES (?,?,?,?,?,?)";
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-            preparedStatement.setString(1, fname);
-            preparedStatement.setString(2, lname);
+            preparedStatement.setString(1, name1);
+            preparedStatement.setString(2, name2);
             preparedStatement.setString(4, password);
             preparedStatement.setString(3, email);
             preparedStatement.setString(5, phone);
@@ -103,6 +104,7 @@ public class RegistrationForm extends JDialog {
             System.out.println("Error in thew SQL class: " + e);
         }
 
+        return user;
     }
 
 

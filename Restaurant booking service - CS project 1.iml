@@ -16,5 +16,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="sqljdbc_11.2.0.0_enu" level="application" />
   </component>
 </module>
