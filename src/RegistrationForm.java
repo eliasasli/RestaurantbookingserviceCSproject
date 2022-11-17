@@ -94,10 +94,10 @@ public class RegistrationForm extends JDialog {
             PreparedStatement preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, name1);
             preparedStatement.setString(2, name2);
-            preparedStatement.setString(4, password);
+            preparedStatement.setString(6, password);
             preparedStatement.setString(3, email);
-            preparedStatement.setString(5, phone);
-            preparedStatement.setString(6, address);
+            preparedStatement.setString(4, phone);
+            preparedStatement.setString(5, address);
 
             int row = preparedStatement.executeUpdate();
         } catch (Exception e) {

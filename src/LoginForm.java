@@ -56,10 +56,10 @@ public class LoginForm extends JDialog {
     private User getAuthenticatedUser(String email, String password) throws Exception{
         User user = null;
 
-        Connection connection = DriverManager.getConnection("jdbc:ucanaccess:/Databaseyesyes.accdb");
+        Connection connection = DriverManager.getConnection("jdbc:ucanaccess://X/My Documents/Database.accdb");
 
         Statement statement = connection.createStatement();
-        ResultSet resultset = statement.executeQuery("Select * from User");
+        ResultSet resultset = statement.executeQuery("Select * from user");
         while (resultset.next())
             System.out.println(resultset.getString(1) + "\t" + resultset.getString(2));
 
