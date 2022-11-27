@@ -84,14 +84,15 @@ public class RegistrationForm extends JDialog {
         }
     }
     public User user;
-    public static User writeToDatabase(String name1, String name2, String email, String password, String phone, String address) throws SQLException {
-        User user = null;
-        String DatabaseLocation = "jdbc:Ucanaccess://X:/My Documents/Databaseyesyes.accdb";
-        try (Connection con = DriverManager.getConnection(DatabaseLocation)) {
+    public static User writeToDatabase(String name1, String name2, String email, String password, String phone, String address) {
+        User user2 = null;
+        try {
 
-            Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
+
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             String sql = "INSERT INTO User (name1, name2, email, password, phone, address) VALUES (?,?,?,?,?,?)";
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, name1);
             preparedStatement.setString(2, name2);
             preparedStatement.setString(6, password);
@@ -104,7 +105,7 @@ public class RegistrationForm extends JDialog {
             System.out.println("Error in thew SQL class: " + e);
         }
 
-        return user;
+        return user2;
     }
 
 

@@ -56,10 +56,10 @@ public class LoginForm extends JDialog {
     private User getAuthenticatedUser(String email, String password) throws Exception{
         User user = null;
 
-        Connection connection = DriverManager.getConnection("jdbc:ucanaccess://X/My Documents/Database.accdb");
+        Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
 
         Statement statement = connection.createStatement();
-        ResultSet resultset = statement.executeQuery("Select * from user");
+        ResultSet resultset = statement.executeQuery("SELECT * FROM jdbc.user;");
         while (resultset.next())
             System.out.println(resultset.getString(1) + "\t" + resultset.getString(2));
 
@@ -69,7 +69,7 @@ public class LoginForm extends JDialog {
             Connection conn = DriverManager.getConnection(String.valueOf(connection));
 
             Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM User WHERE email=? AND password=?";
+            String sql = "SELECT * FROM jdbc.user";
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, email);
             preparedStatement.setString(2, password);

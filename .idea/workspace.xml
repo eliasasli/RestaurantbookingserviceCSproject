@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ba05c47b-f1e7-4f82-8506-fcac7b9c709e" name="Changes" comment="yyy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DashboardForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardForm.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Restaurant booking service - CS project 1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Restaurant booking service - CS project 1.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DashboardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RegistrationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistrationForm.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +38,11 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false"
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Program Files/JDBC/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31/mysql-connector-j-8.0.31.jar",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -60,7 +66,7 @@
       <visibility group="org.jetbrains.plugins.gradle.execution.GradleRunAnythingProvider" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="Application.DashboardForm">
+  <component name="RunManager" selected="Application.LoginForm">
     <configuration name="DashboardForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DashboardForm" />
       <module name="Restaurant booking service - CS project 1" />
@@ -82,11 +88,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="mysql-connector-j-8.0.31.jar" type="JarApplication" temporary="true">
+      <option name="JAR_PATH" value="$PROJECT_DIR$/jdbc driver/mysql-connector-j-8.0.31.jar" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DashboardForm" />
         <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.RegistrationForm" />
+        <item itemvalue="Application.DashboardForm" />
+        <item itemvalue="JAR Application.mysql-connector-j-8.0.31.jar" />
       </list>
     </recent_temporary>
   </component>
