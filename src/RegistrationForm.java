@@ -17,7 +17,7 @@ public class RegistrationForm extends JDialog {
     private JPanel registerPanel;
 
 
-    public RegistrationForm(JFrame parent) {
+    public RegistrationForm(DashboardForm parent) {
         super(parent);
         setTitle("create a new account");
         setContentPane(registerPanel);
@@ -72,17 +72,19 @@ public class RegistrationForm extends JDialog {
             return;
         }
 
-        user = writeToDatabase(name1, name2 , email, password, phone, address );
-        if (user != null) {
-            dispose();
-        }
-        else {
-            JOptionPane.showMessageDialog(this,
-                    "Your registration has failed",
-                    "Please Try Again",
-                    JOptionPane.ERROR_MESSAGE );
-        }
-    }
+
+       try {
+
+           user = writeToDatabase(name1, name2, email, password, phone, address);
+           dispose();
+
+       } catch (Exception e) {
+           throw new RuntimeException(e);
+
+       }
+       }
+
+
     public User user;
     public static User writeToDatabase(String name1, String name2, String email, String password, String phone, String address) {
         User user2 = null;

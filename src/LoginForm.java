@@ -11,7 +11,7 @@ public class LoginForm extends JDialog {
     private JButton btncancel;
     private JPanel loginPanel;
 
-    public LoginForm(JFrame parent) {
+    public LoginForm(DashboardForm parent) {
         super(parent);
         setTitle("login");
         setContentPane(loginPanel);
@@ -59,35 +59,35 @@ public class LoginForm extends JDialog {
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
 
         Statement statement = connection.createStatement();
-        ResultSet resultset = statement.executeQuery("SELECT * FROM jdbc.user;");
-        while (resultset.next())
-            System.out.println(resultset.getString(1) + "\t" + resultset.getString(2));
 
-        connection.close();
+
+
 
         try{
-            Connection conn = DriverManager.getConnection(String.valueOf(connection));
+            System.out.println("1");
+            Statement stmt = connection.createStatement();
+            String s1 = "SELECT * FROM jdbc.user WHERE email = ";
+            String s2 = "AND password = ";
+            String s3 = ";";
+            String sql_statement = s1 + email;
 
-            Statement stmt = conn.createStatement();
-            String sql = "SELECT * FROM jdbc.user";
-            PreparedStatement preparedStatement = conn.prepareStatement(sql);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql_statement);
+            System.out.println("2");
+            System.out.println("3");
+            ResultSet resultSet1 = preparedStatement.executeQuery();
+            System.out.println("4");
+            if (resultSet1.next()) {
                 user = new User();
-                user.name = resultSet.getString("fname");
-                user.name = resultSet.getString("lname");
-                user.email = resultSet.getString("email");
-                user.phone = resultSet.getString("phone");
-                user.address = resultSet.getString("address");
-                user.password = resultSet.getString("password");
+                user.name = resultSet1.getString("fname");
+                user.name = resultSet1.getString("lname");
+                user.email = resultSet1.getString("email");
+                user.phone = resultSet1.getString("phone");
+                user.address = resultSet1.getString("address");
+                user.password = resultSet1.getString("password");
             }
 
             stmt.close();
-            conn.close();
+            connection.close();
 
         }catch(Exception e){
             e.printStackTrace();
@@ -105,6 +105,7 @@ public class LoginForm extends JDialog {
             System.out.println("             Email: " + user.email);
             System.out.println("             Phone: " + user.phone);
             System.out.println("             Address: " + user.address);
+
         }
         else {
             System.out.println("Authentication Canceled");

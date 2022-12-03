@@ -6,32 +6,18 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.*;
 
-public class DashboardForm extends JFrame {
+public class DashboardForm extends JDialog {
     private JPanel dashboardPanel;
     private JLabel lbAdmin;
     private JButton btnRegister;
     private JButton btnLogin;
     private JButton btnBooking;
-    public void table() throws Exception{
-        try {
-
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
-
-            Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM jdbc.user;");
-
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("name1"));
 
 
-            }
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
 
-    }
+
 
 
 
@@ -48,27 +34,18 @@ public class DashboardForm extends JFrame {
       //   while (flight < 5) {
       //       if ()
 
-    public DashboardForm() throws Exception {
+    public DashboardForm(JFrame parent) {
+        super(parent);
         setTitle("Main Menu");
         setContentPane(dashboardPanel);
-        setMinimumSize(new Dimension(500, 429));
-        setSize(1300,700);
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new Dimension(800, 474));
+        setModal(true);
+        setLocationRelativeTo(parent);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        boolean hasRegistredUsers = connectToDatabase();
-        if (hasRegistredUsers) {
-            LoginForm loginForm = new LoginForm(this);
-            User user = loginForm.user;
 
-            if (user != null) {
-                lbAdmin.setText("User: " + user.name);
-                setLocationRelativeTo(null);
-                setVisible(true);
-            }
-            else {
-                dispose();
-            }
-        }
+
+
 
         btnRegister.addActionListener(new ActionListener() {
             @Override
@@ -119,11 +96,10 @@ public class DashboardForm extends JFrame {
 
             ResultSet resultSet = statement.executeQuery("SELECT * FROM jdbc.user;");
 
-            while (resultSet.next()) {
-                System.out.println(resultSet.getString("name1"));
 
 
-            }
+
+
         }catch (Exception e) {
             e.printStackTrace();
         }
@@ -133,8 +109,10 @@ public class DashboardForm extends JFrame {
 
         return hasRegistredUsers;
     }
-
+public static User user;
     public static void main(String[] args) throws Exception {
-        DashboardForm myForm = new DashboardForm();
+        DashboardForm myForm = new DashboardForm(null);
+        User user = DashboardForm.user;
+
     }
 }
