@@ -10,17 +10,19 @@ public class LoginForm extends JDialog {
     private JButton btnOK;
     private JButton btncancel;
     private JPanel loginPanel;
-
-    public LoginForm(DashboardForm parent) {
+    private JButton btnregistration;
+    private JButton btnadmin;
+    public User user;
+    public LoginForm(RegistrationForm parent) { //parameters
         super(parent);
         setTitle("login");
         setContentPane(loginPanel);
-        setMinimumSize(new Dimension(800,474));
+        setMinimumSize(new Dimension(800, 474));
         setModal(true);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        btnOK.addActionListener(new ActionListener() {
+        btnOK.addActionListener(new ActionListener() { //fetching info from textfields then seing if they match any in the database, if so, close if not, invalid
             @Override
             public void actionPerformed(ActionEvent e) {
                 String email = tfEmail.getText();
@@ -33,9 +35,10 @@ public class LoginForm extends JDialog {
                 }
 
                 if (user != null) {
+                    DashboardForm dashboardForm = new DashboardForm(null);
+                    dashboardForm.setVisible(true);
                     dispose();
-                }
-                else {
+                } else {
                     JOptionPane.showMessageDialog(LoginForm.this,
                             "Your Email or Password is Invalid",
                             "Please try again",
@@ -43,17 +46,49 @@ public class LoginForm extends JDialog {
                 }
             }
         });
-        btncancel.addActionListener(new ActionListener() {
+        btncancel.addActionListener(new ActionListener() {//close
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
         });
+
+        btnregistration.addActionListener(new ActionListener() {//go to registration form
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                RegistrationForm registrationForm = new RegistrationForm(null);
+                User user = registrationForm.user;
+
+                if (user != null) {
+                    JOptionPane.showMessageDialog(LoginForm.this,
+                            "New user: " + user.name,
+                            "you are logged in!",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
+
+        btnadmin.addActionListener(new ActionListener() { // go to admin login
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Admin admin = new Admin(null);
+                User user = admin.user;
+
+                if (user != null) {
+                    JOptionPane.showMessageDialog(LoginForm.this,
+                            "New user: " + user.name,
+                            "you are logged in!",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
         setVisible(true);
     }
 
-    public User user;
-    private User getAuthenticatedUser(String email, String password) throws Exception{
+
+    private User getAuthenticatedUser(String email, String password) throws Exception{ // connection to database
         User user = null;
 
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
@@ -67,6 +102,10 @@ public class LoginForm extends JDialog {
             System.out.println("1");
             Statement stmt = connection.createStatement();
             String s1 = "SELECT * FROM jdbc.user WHERE email = ";
+
+            // doesnt work and is causing the error (select from)
+
+
             String s2 = "AND password = ";
             String s3 = ";";
             String sql_statement = s1 + email;

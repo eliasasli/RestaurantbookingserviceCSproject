@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.sql.*;
 
 public class DashboardForm extends JDialog {
     private JPanel dashboardPanel;
@@ -16,14 +16,7 @@ public class DashboardForm extends JDialog {
     private JButton btnBooking;
 
 
-
-
-
-
-
-
-
-       //  MAKE A 3D ARRAY!!!!!!!!!!!!!!!!!!
+    //  MAKE A 3D ARRAY!!!!!!!!!!!!!!!!!!
 
 
 
@@ -34,7 +27,7 @@ public class DashboardForm extends JDialog {
       //   while (flight < 5) {
       //       if ()
 
-    public DashboardForm(JFrame parent) {
+    public DashboardForm(JFrame parent) { //setting parameters
         super(parent);
         setTitle("Main Menu");
         setContentPane(dashboardPanel);
@@ -42,6 +35,9 @@ public class DashboardForm extends JDialog {
         setModal(true);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+
+
+
 
 
 
@@ -64,7 +60,7 @@ public class DashboardForm extends JDialog {
         btnLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginForm loginForm = new LoginForm(DashboardForm.this);
+                LoginForm loginForm = new LoginForm(null);
                 User user = loginForm.user;
 
                 if (user != null) {
@@ -81,6 +77,7 @@ public class DashboardForm extends JDialog {
 
             }
         });
+
     }
 
 
@@ -108,11 +105,6 @@ public class DashboardForm extends JDialog {
 
 
         return hasRegistredUsers;
-    }
-public static User user;
-    public static void main(String[] args) throws Exception {
-        DashboardForm myForm = new DashboardForm(null);
-        User user = DashboardForm.user;
+    }}
 
-    }
-}
+

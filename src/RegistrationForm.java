@@ -15,18 +15,20 @@ public class RegistrationForm extends JDialog {
     private JButton btnRegister;
     private JButton btnCancel;
     private JPanel registerPanel;
+    private JButton btnlogin;
+    private JButton btnadmin;
 
 
-    public RegistrationForm(DashboardForm parent) {
+    public RegistrationForm(DashboardForm parent) { //parameters
         super(parent);
         setTitle("create a new account");
         setContentPane(registerPanel);
-        setMinimumSize(new Dimension(500,474));
+        setMinimumSize(new Dimension(500, 474));
         setModal(true);
         setLocationRelativeTo(parent);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
-        btnRegister.addActionListener(new ActionListener() {
+        btnRegister.addActionListener(new ActionListener() { //setting up the act of registering a user
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
@@ -36,17 +38,51 @@ public class RegistrationForm extends JDialog {
                 }
             }
         });
-        btnCancel.addActionListener(new ActionListener() {
+
+        btnCancel.addActionListener(new ActionListener() { //closing form
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
             }
         });
 
+
+        btnlogin.addActionListener(new ActionListener() { //going to loginform
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                LoginForm loginForm = new LoginForm(null);
+                User user = loginForm.user;
+
+                if (user != null) {
+                    JOptionPane.showMessageDialog(RegistrationForm.this,
+                            "New user: " + user.name,
+                            "you are logged in!",
+                            JOptionPane.INFORMATION_MESSAGE);
+            }}
+        });
+
+        btnadmin.addActionListener(new ActionListener() {//go to admin login
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                Admin admin = new Admin(null);
+                User user = admin.user;
+
+                if (user != null) {
+                    JOptionPane.showMessageDialog(RegistrationForm.this,
+                            "New user: " + user.name,
+                            "you are logged in!",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+        });
         setVisible(true);
     }
 
-    private void registerUser() throws Exception {
+
+
+    private void registerUser() throws Exception { //empty fields
         String name1 = tffname.getText();
         String name2 = tflname.getText();
         String email = tfEmail.getText();
@@ -64,7 +100,7 @@ public class RegistrationForm extends JDialog {
 
         }
 
-        if (!password.equals(confirmPassword)) {
+        if (!password.equals(confirmPassword)) { //password match
             JOptionPane.showMessageDialog(this,
                     "Your passwords do not match",
                     "Please Try Again",
@@ -74,14 +110,14 @@ public class RegistrationForm extends JDialog {
 
 
        try {
-
-           user = writeToDatabase(name1, name2, email, password, phone, address);
+           user = writeToDatabase(name1, name2, email, password, phone, address); //writing to the database info
            dispose();
-
        } catch (Exception e) {
            throw new RuntimeException(e);
-
        }
+        DashboardForm dashboardForm = new DashboardForm(null);
+        dashboardForm.setVisible(true);
+        dispose();
        }
 
 
@@ -90,7 +126,7 @@ public class RegistrationForm extends JDialog {
         User user2 = null;
         try {
 
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!"); //connecting to database
 
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             String sql = "INSERT INTO User (name1, name2, email, password, phone, address) VALUES (?,?,?,?,?,?)";
@@ -114,11 +150,14 @@ public class RegistrationForm extends JDialog {
     public static void main(String[] args) {
         RegistrationForm myForm = new RegistrationForm(null);
         User user = myForm.user;
-        if (user != null) {
+
+        if (user != null) {  //if info is sent to database then success
             System.out.println("Successful Registration of: " + user.name);
 
+
 }
-        else {
-            System.out.println("registration Canceled");
-        }
-}}
+
+
+
+}
+}
