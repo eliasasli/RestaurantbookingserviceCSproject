@@ -91,43 +91,41 @@ public class LoginForm extends JDialog {
     private User getAuthenticatedUser(String email, String password) throws Exception{ // connection to database
         User user = null;
 
+
+
+
+
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
 
-        Statement statement = connection.createStatement();
-
-
-
+        Statement statement1 = connection.createStatement();
 
         try{
             System.out.println("1");
             Statement stmt = connection.createStatement();
-            String s1 = "SELECT * FROM jdbc.user WHERE email = ";
+            String s1 = "SELECT * FROM jdbc.user WHERE email=? and password=?";
 
             // doesnt work and is causing the error (select from)
 
 
-            String s2 = "AND password = ";
-            String s3 = ";";
-            String sql_statement = s1 + email;
 
-            PreparedStatement preparedStatement = connection.prepareStatement(sql_statement);
+
+
+            PreparedStatement preparedStatement = connection.prepareStatement(s1);
+
             System.out.println("2");
-            System.out.println("3");
-            ResultSet resultSet1 = preparedStatement.executeQuery();
-            System.out.println("4");
-            if (resultSet1.next()) {
-                user = new User();
-                user.name = resultSet1.getString("fname");
-                user.name = resultSet1.getString("lname");
-                user.email = resultSet1.getString("email");
-                user.phone = resultSet1.getString("phone");
-                user.address = resultSet1.getString("address");
-                user.password = resultSet1.getString("password");
-            }
 
+
+
+
+                PreparedStatement statement = connection.prepareStatement(s1);{
+                    statement.setString(1, email);
+                    statement.setString(2, password);
+                System.out.println("3");
+
+            }
             stmt.close();
             connection.close();
-
+            System.out.println("4");
         }catch(Exception e){
             e.printStackTrace();
         }

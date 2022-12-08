@@ -2,20 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ba05c47b-f1e7-4f82-8506-fcac7b9c709e" name="Changes" comment="yyytttt">
-      <change afterPath="$PROJECT_DIR$/src/Admin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/icons8-name-100.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Adminmain.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Adminmain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MENU.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MENU.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MENU1.JPG" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MENU2.JPG" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mysql-connector-java-8.0.30.jar" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DashboardForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DashboardForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DashboardForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/LoginForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/LoginForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/LoginForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegistrationForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistrationForm.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/RegistrationForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegistrationForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javaGUI.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/javaGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ww.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/Admin.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ww.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,17 +40,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/elias/IdeaProjects/RestaurantbookingserviceCSprojectwww/src",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/elias/IdeaProjects/RestaurantbookingserviceCSprojectwww/src&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -63,11 +60,11 @@
       <recent name="C:\Users\elias\IdeaProjects\RestaurantbookingserviceCSprojectwww\Images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\elias\IdeaProjects\RestaurantbookingserviceCSproject2\src" />
+      <recent name="C:\Users\elias\IdeaProjects\RestaurantbookingserviceCSproject2\w" />
       <recent name="C:\Users\elias\IdeaProjects\RestaurantbookingserviceCSprojectwww\src" />
       <recent name="C:\Users\elias\IdeaProjects\RestaurantbookingserviceCSprojectwww\Images" />
       <recent name="C:\Users\elias\IdeaProjects\RestaurantbookingserviceCSprojectwww" />
-      <recent name="C:\Users\elias\IdeaProjects\Restaurant booking service - CS project 1\src" />
-      <recent name="C:\Users\elias\IdeaProjects\Restaurant booking service - CS project 1" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -82,7 +79,7 @@
       <visibility group="org.jetbrains.plugins.gradle.execution.GradleRunAnythingProvider" flag="true" />
     </myKeys>
   </component>
-  <component name="RunManager" selected="Application.RegistrationForm">
+  <component name="RunManager" selected="Application.MENU">
     <configuration name="Admin" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Admin" />
       <module name="Restaurant booking service - CS project 1" />
@@ -104,6 +101,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MENU" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MENU" />
+      <module name="Restaurant booking service - CS project 1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RegistrationForm" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="RegistrationForm" />
       <module name="Restaurant booking service - CS project 1" />
@@ -111,17 +115,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="mysql-connector-j-8.0.31.jar" type="JarApplication" temporary="true">
-      <option name="JAR_PATH" value="$PROJECT_DIR$/jdbc driver/mysql-connector-j-8.0.31.jar" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MENU" />
         <item itemvalue="Application.RegistrationForm" />
-        <item itemvalue="Application.Admin" />
         <item itemvalue="Application.LoginForm" />
         <item itemvalue="Application.DashboardForm" />
-        <item itemvalue="JAR Application.mysql-connector-j-8.0.31.jar" />
+        <item itemvalue="Application.Admin" />
       </list>
     </recent_temporary>
   </component>
@@ -177,32 +177,6 @@
     <MESSAGE value="yyy" />
     <MESSAGE value="yyytttt" />
     <option name="LAST_COMMIT_MESSAGE" value="yyytttt" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LoginForm.java</url>
-          <line>103</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LoginForm.java</url>
-          <line>109</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LoginForm.java</url>
-          <line>110</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/LoginForm.java</url>
-          <line>108</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/RestaurantbookingserviceCSprojectwww$DashboardForm.ic" NAME="DashboardForm Coverage Results" MODIFIED="1670012734567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />

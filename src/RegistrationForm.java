@@ -59,7 +59,8 @@ public class RegistrationForm extends JDialog {
                             "New user: " + user.name,
                             "you are logged in!",
                             JOptionPane.INFORMATION_MESSAGE);
-            }}
+                }
+            }
         });
 
         btnadmin.addActionListener(new ActionListener() {//go to admin login
@@ -81,7 +82,6 @@ public class RegistrationForm extends JDialog {
     }
 
 
-
     private void registerUser() throws Exception { //empty fields
         String name1 = tffname.getText();
         String name2 = tflname.getText();
@@ -91,11 +91,11 @@ public class RegistrationForm extends JDialog {
         String password = String.valueOf(pfPassword.getPassword());
         String confirmPassword = String.valueOf(pfConfirmPassword.getPassword());
 
-        if (name1.isEmpty() || name2.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() ||password.isEmpty()) {
+        if (name1.isEmpty() || name2.isEmpty() || email.isEmpty() || phone.isEmpty() || address.isEmpty() || password.isEmpty()) {
             JOptionPane.showMessageDialog(this,
                     "1 or more fields are empty",
-                            "Please Try Again",
-                           JOptionPane.ERROR_MESSAGE );
+                    "Please Try Again",
+                    JOptionPane.ERROR_MESSAGE);
             return;
 
         }
@@ -104,24 +104,25 @@ public class RegistrationForm extends JDialog {
             JOptionPane.showMessageDialog(this,
                     "Your passwords do not match",
                     "Please Try Again",
-                    JOptionPane.ERROR_MESSAGE );
+                    JOptionPane.ERROR_MESSAGE);
             return;
         }
 
 
-       try {
-           user = writeToDatabase(name1, name2, email, password, phone, address); //writing to the database info
-           dispose();
-       } catch (Exception e) {
-           throw new RuntimeException(e);
-       }
+        try {
+            user = writeToDatabase(name1, name2, email, password, phone, address); //writing to the database info
+            dispose();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
         DashboardForm dashboardForm = new DashboardForm(null);
         dashboardForm.setVisible(true);
         dispose();
-       }
+    }
 
 
     public User user;
+
     public static User writeToDatabase(String name1, String name2, String email, String password, String phone, String address) {
         User user2 = null;
         try {
@@ -155,9 +156,8 @@ public class RegistrationForm extends JDialog {
             System.out.println("Successful Registration of: " + user.name);
 
 
-}
+        }
 
 
-
-}
+    }
 }

@@ -16,16 +16,14 @@ public class DashboardForm extends JDialog {
     private JButton btnBooking;
 
 
+
     //  MAKE A 3D ARRAY!!!!!!!!!!!!!!!!!!
 
 
-
-
-
-     //    int tableplacement[][][][][][][][][][] = new int [][][];
-     //    int flight = 0;
-      //   while (flight < 5) {
-      //       if ()
+    //    int tableplacement[][][][][][][][][][] = new int [][][];
+    //    int flight = 0;
+    //   while (flight < 5) {
+    //       if ()
 
     public DashboardForm(JFrame parent) { //setting parameters
         super(parent);
@@ -37,13 +35,7 @@ public class DashboardForm extends JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
 
-
-
-
-
-
-
-        btnRegister.addActionListener(new ActionListener() {
+        btnRegister.addActionListener(new ActionListener() { // go to register
             @Override
             public void actionPerformed(ActionEvent e) {
                 RegistrationForm registrationForm = new RegistrationForm(DashboardForm.this);
@@ -57,7 +49,7 @@ public class DashboardForm extends JDialog {
                 }
             }
         });
-        btnLogin.addActionListener(new ActionListener() {
+        btnLogin.addActionListener(new ActionListener() { // go to login
             @Override
             public void actionPerformed(ActionEvent e) {
                 LoginForm loginForm = new LoginForm(null);
@@ -74,6 +66,9 @@ public class DashboardForm extends JDialog {
         btnBooking.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                MENU menu = new MENU(null);
+                User user = menu.user;
+
 
             }
         });
@@ -81,9 +76,8 @@ public class DashboardForm extends JDialog {
     }
 
 
-
     private boolean connectToDatabase() throws Exception {
-       boolean hasRegistredUsers = false;
+        boolean hasRegistredUsers = false;
 
         try {
 
@@ -94,17 +88,15 @@ public class DashboardForm extends JDialog {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM jdbc.user;");
 
 
-
-
-
-        }catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
 
-
-
         return hasRegistredUsers;
     }}
+
+
+
 
 
