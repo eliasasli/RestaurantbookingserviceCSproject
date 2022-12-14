@@ -35,9 +35,9 @@ public class LoginForm extends JDialog {
                 }
 
                 if (user != null) {
+                    dispose();
                     DashboardForm dashboardForm = new DashboardForm(null);
                     dashboardForm.setVisible(true);
-                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(LoginForm.this,
                             "Your Email or Password is Invalid",
@@ -88,55 +88,50 @@ public class LoginForm extends JDialog {
     }
 
 
-    private User getAuthenticatedUser(String email, String password) throws Exception{ // connection to database
-        User user = null;
-
-
-
-
+    public static User getAuthenticatedUser(String email, String password) throws Exception { // connection to database
+        User user3 = null;
 
         Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "Eldaem03!");
 
         Statement statement1 = connection.createStatement();
 
-        try{
+        ResultSet rs = null;
+        try {
             System.out.println("1");
             Statement stmt = connection.createStatement();
-            String s1 = "SELECT * FROM jdbc.user WHERE email=? and password=?";
+            String s1 = "SELECT * FROM jdbc.user WHERE email=@";
+            String s2 = " AND password=@";
+            String res = s1 + email + s2 + password;
+            System.out.println(res);
 
-            // doesnt work and is causing the error (select from)
-
-
-
-
-
-            PreparedStatement preparedStatement = connection.prepareStatement(s1);
 
             System.out.println("2");
 
 
+            Statement statement = connection.createStatement();
+
+            rs = statement.executeQuery(res);
 
 
-                PreparedStatement statement = connection.prepareStatement(s1);{
-                    statement.setString(1, email);
-                    statement.setString(2, password);
-                System.out.println("3");
+            System.out.println("3");
 
-            }
+
             stmt.close();
             connection.close();
             System.out.println("4");
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
+            user3 = null;
         }
 
-
-        return user;
+        user3 = rs;
+        return user3;
     }
 
     public static void main(String[] args) {
         LoginForm loginForm = new LoginForm(null);
         User user = loginForm.user;
+        System.out.println(user);
         if (user != null) {
             System.out.println("Successful Authentication of: " + user.name);
             System.out.println("             Email: " + user.email);

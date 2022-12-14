@@ -70,12 +70,7 @@ public class RegistrationForm extends JDialog {
                 Admin admin = new Admin(null);
                 User user = admin.user;
 
-                if (user != null) {
-                    JOptionPane.showMessageDialog(RegistrationForm.this,
-                            "New user: " + user.name,
-                            "you are logged in!",
-                            JOptionPane.INFORMATION_MESSAGE);
-                }
+
             }
         });
         setVisible(true);
@@ -151,13 +146,11 @@ public class RegistrationForm extends JDialog {
     public static void main(String[] args) {
         RegistrationForm myForm = new RegistrationForm(null);
         User user = myForm.user;
-
-        if (user != null) {  //if info is sent to database then success
-            System.out.println("Successful Registration of: " + user.name);
-
-
-        }
+        System.out.println(user);
 
 
     }
+
+
 }
+

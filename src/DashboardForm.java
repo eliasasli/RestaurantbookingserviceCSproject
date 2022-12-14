@@ -65,15 +65,24 @@ public class DashboardForm extends JDialog {
         });
         btnBooking.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                MENU menu = new MENU(null);
+            public void actionPerformed(ActionEvent e) { // go to menu
+                dispose();
+               MENU menu = new MENU(null);
                 User user = menu.user;
+                if (user != null) {
+                    JOptionPane.showMessageDialog(DashboardForm.this,
+                           "New user: " + user.name,
+                            "you are logged in!",
+                            JOptionPane.INFORMATION_MESSAGE);
 
-
+                }
             }
         });
 
+        setVisible(true);
     }
+
+
 
 
     private boolean connectToDatabase() throws Exception {
